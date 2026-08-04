@@ -44,7 +44,7 @@ showParagraphs();
 
 document.getElementById("finish").onclick = function () {
 
-    window.scrollTo(0,0);
+  
 
     document.querySelector(".hero").style.display = "none";
     document.getElementById("letterPage").style.display = "none";
