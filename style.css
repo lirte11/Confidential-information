@@ -1,0 +1,428 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#000;
+    color:white;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+/* מסך סיסמה */
+
+#password-screen{
+
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    background:#050505;
+
+}
+
+#password-screen h1{
+
+    font-size:50px;
+    margin-bottom:10px;
+
+}
+
+#password-screen p{
+
+    font-size:24px;
+    color:#bbbbbb;
+    margin-bottom:40px;
+
+}
+
+input{
+
+    width:320px;
+
+    padding:18px;
+
+    font-size:22px;
+
+    border-radius:12px;
+
+    border:1px solid #555;
+
+    background:#111;
+
+    color:white;
+
+    text-align:center;
+
+}
+
+button{
+
+    margin-top:25px;
+
+    width:320px;
+
+    padding:18px;
+
+    font-size:22px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:white;
+
+    cursor:pointer;
+
+}
+
+#error{
+
+    color:#ff6b6b;
+
+    margin-top:20px;
+
+    height:25px;
+
+}
+
+/* מסך פתיחה */
+
+.hero{
+    position:relative;
+    width:100vw;
+    height:100vh;
+    background:#000;
+    overflow:hidden;
+}
+
+.cover{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.overlay{
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(0,0,0,.45);
+
+}
+
+.content{
+
+    position:absolute;
+
+    top:50%;
+
+    left:50%;
+
+    transform:translate(-50%,-50%);
+
+    text-align:center;
+
+}
+
+.crown{
+
+    font-size:70px;
+
+}
+
+.content h1{
+
+    font-size:58px;
+
+    margin-top:20px;
+
+}
+
+.content h2{
+
+    margin-top:10px;
+
+    font-size:34px;
+
+}/* מסך טעינה */
+
+#loading-screen{
+
+    display:none;
+
+    position:fixed;
+
+    top:0;
+    left:0;
+
+    width:100%;
+    height:100%;
+
+    background:black;
+
+    justify-content:center;
+    align-items:center;
+
+    z-index:999;
+
+}
+
+#loading-text{
+
+    color:white;
+
+    font-size:50px;
+
+    opacity:.8;
+
+    animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+
+opacity:.3;
+
+}
+
+50%{
+
+opacity:1;
+
+}
+
+100%{
+
+opacity:.3;
+
+}
+}
+#envelope{
+    position:relative;
+    width:260px;
+    height:170px;
+    margin:50px auto;
+    cursor:pointer;
+}
+
+#top{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:90px;
+   background:#ffffff;
+    clip-path:polygon(0 0,100% 0,50% 100%);
+    transform-origin:top;
+    transition:.8s;
+    z-index:3;
+}
+
+#letter{
+    position:absolute;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:150px;
+    background:#fafafa;
+    border-radius:0 0 12px 12px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:70px;
+    transition:1s;
+  box-shadow:0 10px 30px rgba(0,0,0,.25);
+}#envelope:hover #top{
+    transform:rotateX(180deg);
+}
+
+#envelope:hover #letter{
+    bottom:120px;
+}#envelope.open #top{
+    transform:rotateX(180deg);
+}
+
+#envelope.open #letter{
+    bottom:120px;
+}#letterPage{
+    position:fixed;
+    inset:0;
+    background:#111;
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:9999;
+}
+
+#paper{
+    width:80%;
+    max-width:850px;
+    height:80%;
+    background:white;
+    color:black;
+    border-radius:15px;
+    padding:40px;
+    overflow:auto;
+    transform:translateY(100%);
+    transition:1s;
+    font-size:22px;
+    line-height:2;
+}   /* ← זה היה חסר */
+
+#ending{
+    position:fixed;
+    inset:0;
+    background:#000;
+    display:flex;
+    flex-direction:row-reverse;
+    justify-content:center;
+    align-items:center;
+    gap:80px;
+    overflow:hidden;
+    z-index:99999;
+}
+
+.end-left{
+    width:380px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:#fff;
+}
+
+.end-left h1{
+    font-size:58px;
+    margin-bottom:25px;
+}
+
+.end-left h2{
+    font-size:42px;
+    margin-bottom:20px;
+}
+
+.end-left h3{
+    font-size:36px;
+    color:#ff5f9d;
+    margin-bottom:30px;
+}
+
+.end-left h4{
+    font-size:40px;
+}
+
+.end-image{
+    width:auto;
+    height:95vh;
+    object-fit:contain;
+    display:block;
+}.heart{
+    position:fixed;
+    top:-50px;
+    font-size:30px;
+    animation:fall linear forwards;
+    pointer-events:none;
+    z-index:999999;
+}
+
+@keyframes fall{
+    from{
+        transform:translateY(-50px) rotate(0deg);
+        opacity:1;
+    }
+    to{
+        transform:translateY(110vh) rotate(360deg);
+        opacity:0;
+    }
+}.firework{
+    position:fixed;
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#fff;
+    pointer-events:none;
+    animation:explode .8s forwards;
+}
+
+@keyframes explode{
+
+0%{
+transform:scale(.2);
+opacity:1;
+}
+
+100%{
+transform:scale(10);
+opacity:0;
+}
+
+}
+.sparkle{
+    position:absolute;
+    width:8px;
+    height:8px;
+    background:white;
+    border-radius:50%;
+    box-shadow:0 0 15px #fff;
+    animation:sparkle 2s infinite;
+    pointer-events:none;
+}
+
+@keyframes sparkle{
+
+0%{
+transform:scale(0);
+opacity:0;
+}
+
+50%{
+transform:scale(1.5);
+opacity:1;
+}
+
+100%{
+transform:scale(0);
+opacity:0;
+}
+
+}
+.confetti{
+    position:fixed;
+    width:10px;
+    height:16px;
+    top:-20px;
+    animation:confettiFall linear forwards;
+    z-index:999999;
+}
+
+@keyframes confettiFall{
+
+0%{
+transform:translateY(-20px) rotate(0deg);
+}
+
+100%{
+transform:translateY(110vh) rotate(720deg);
+}
+
+}
+.fade{
+    opacity:0;
+    transform:translateY(30px);
+    transition:1s;
+}
+
+.fade.show{
+    opacity:1;
+    transform:translateY(0);
+}
