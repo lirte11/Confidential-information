@@ -44,11 +44,13 @@ showParagraphs();
 
 document.getElementById("finish").onclick = function () {
 
-  
+   
 
     document.querySelector(".hero").style.display = "none";
     document.getElementById("letterPage").style.display = "none";
-    document.getElementById("ending").style.display = "flex";
+   const ending = document.getElementById("ending");
+ending.style.display = "flex";
+ending.style.visibility = "visible";
 
     startHearts();
     startFireworks();
