@@ -98,7 +98,8 @@ button{
     width:100vw;
     height:100vh;
     background:#000;
-    overflow:hidden;
+    overflow-y: auto;
+overflow-x: hidden;
 }
 
 .cover{
@@ -664,8 +665,9 @@ left:150%;
 }
 
 .end-image{
-    width:320px;
-    max-width:90vw;
-    height:auto;
-    border-radius:20px;
+    width: 260px;
+    max-width: 80vw;
+    height: auto;
+    border-radius: 20px;
+    display: block;
 }
