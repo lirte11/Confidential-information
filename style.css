@@ -356,7 +356,7 @@ height:auto;
 }
 
 .end-left{
-    width:380px;
+    width:280px;
     display:flex;
     flex-direction:column;
     justify-content:center;
@@ -366,23 +366,23 @@ height:auto;
 }
 
 .end-left h1{
-    font-size:58px;
-    margin-bottom:25px;
+    font-size:38px;
+    margin-bottom:18px;
 }
 
 .end-left h2{
-    font-size:42px;
-    margin-bottom:20px;
+    font-size:28px;
+    margin-bottom:15px;
 }
 
 .end-left h3{
-    font-size:36px;
+    font-size:24px;
     color:#ff5f9d;
-    margin-bottom:30px;
+    margin-bottom:20px;
 }
 
 .end-left h4{
-    font-size:40px;
+    font-size:28px;
 }
 
 
@@ -660,10 +660,12 @@ left:150%;
 .end-images{
     display:flex;
     flex-direction:column;
-    gap:20px;
+    gap:12px;
 }
 
 .end-image{
-    width:220px;
+    width:180px;
+    height:auto;
     border-radius:20px;
+    display:block;
 }
