@@ -56,7 +56,10 @@ ending.classList.add("show");
 const music = document.getElementById("music");
 
 music.currentTime = 169; // 2:49
-music.play();
+music.play().catch(error => {
+    console.log(error);
+    alert(error);
+});
     startHearts();
 
 setTimeout(()=>{
