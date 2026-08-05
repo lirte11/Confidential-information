@@ -351,7 +351,7 @@ height:auto;
     justify-content:center;
     align-items:center;
    gap:30px;
-    overflow:hidden;
+   overflow:auto;
     z-index:99999;
 }
 
@@ -665,7 +665,7 @@ left:150%;
 }
 
 .end-image{
-    width:270px;
+    width:300px;
     max-width:90vw;
     height:auto;
     border-radius:20px;
