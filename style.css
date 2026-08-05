@@ -384,12 +384,8 @@ height:auto;
     font-size:40px;
 }
 
-.end-image{
-    width:auto;
-    height:95vh;
-    object-fit:contain;
-    display:block;
-}.heart{
+
+.heart{
     position:fixed;
     top:-50px;
     font-size:30px;
