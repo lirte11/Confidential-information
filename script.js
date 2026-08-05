@@ -53,8 +53,18 @@ document.getElementById("finish").onclick = function () {
 ending.classList.add("show");
 
     startHearts();
+
+setTimeout(()=>{
+
     startFireworks();
+
+},400);
+
+setTimeout(()=>{
+
     startRoses();
+
+},800);
 
 };
 
@@ -65,7 +75,17 @@ function startHearts(){
         const heart=document.createElement("div");
 
         heart.className="heart";
-        heart.innerHTML="❤️";
+        const hearts = [
+    "❤️",
+    "💖",
+    "💕",
+    "💗",
+    "💝"
+];
+
+heart.innerHTML = hearts[
+    Math.floor(Math.random() * hearts.length)
+];
 
         heart.style.left=Math.random()*100+"vw";
         heart.style.animationDuration=3+Math.random()*3+"s";
@@ -80,30 +100,62 @@ function startHearts(){
 
 function startFireworks(){
 
-    let count=0;
+    let count = 0;
 
-    const timer=setInterval(()=>{
+    const timer = setInterval(()=>{
 
-        const fw=document.createElement("div");
+        const firework = document.createElement("div");
 
-        fw.className="firework";
+        firework.className = "firework";
 
-        fw.style.left=Math.random()*100+"vw";
-        fw.style.top=Math.random()*100+"vh";
+        firework.style.left = Math.random()*100 + "vw";
+        firework.style.top = Math.random()*100 + "vh";
 
-        fw.style.background=`hsl(${Math.random()*360},100%,60%)`;
+        document.body.appendChild(firework);
 
-        document.body.appendChild(fw);
+        const colors = [
+            "#ff4d6d",
+            "#ffd60a",
+            "#00d4ff",
+            "#7bff00",
+            "#ffffff",
+            "#ff66ff"
+        ];
 
-        setTimeout(()=>fw.remove(),900);
+        for(let i=0;i<18;i++){
+
+            const particle = document.createElement("div");
+
+            particle.className = "particle";
+
+            particle.style.background =
+                colors[Math.floor(Math.random()*colors.length)];
+
+            particle.style.setProperty(
+                "--x",
+                (Math.random()*160-80)+"px"
+            );
+
+            particle.style.setProperty(
+                "--y",
+                (Math.random()*160-80)+"px"
+            );
+
+            firework.appendChild(particle);
+
+        }
+
+        setTimeout(()=>{
+            firework.remove();
+        },1000);
 
         count++;
 
-        if(count>40){
+        if(count>=30){
             clearInterval(timer);
         }
 
-    },120);
+    },180);
 
 }
 createSparkles();
