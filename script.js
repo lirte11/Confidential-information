@@ -53,7 +53,10 @@ document.getElementById("finish").onclick = function () {
 ending.style.display = "flex";
 ending.style.visibility = "visible";
 ending.classList.add("show");
+const music = document.getElementById("music");
 
+music.currentTime = 169; // 2:49
+music.play();
     startHearts();
 
 setTimeout(()=>{
