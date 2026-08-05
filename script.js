@@ -54,13 +54,11 @@ ending.style.display = "flex";
 ending.style.visibility = "visible";
 ending.classList.add("show");
 const music = document.getElementById("music");
-alert("מצאתי את הנגן");
 music.currentTime = 169; // 2:49
-music.play().catch(error => {
-    console.log(error);
-    alert(error);
-});
-alert("ניסיתי לנגן");
+
+setTimeout(() => {
+    music.play();
+}, 300);
     startHearts();
 
 setTimeout(()=>{
