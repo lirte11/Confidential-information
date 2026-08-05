@@ -645,42 +645,9 @@ translateY(0);
 }
 
 }
-.end-images{
-    display:flex;
-    flex-direction:column;
-    gap:20px;
-}
 
-.end-image{
-    width:auto;
-    height:95vh;
-    object-fit:contain;
-}
 
-.end-image::after{
 
-content:"";
-
-position:absolute;
-
-top:0;
-left:-40%;
-
-width:40%;
-height:100%;
-
-background:linear-gradient(
-90deg,
-transparent,
-rgba(255,255,255,.5),
-transparent
-);
-
-transform:skewX(-20deg);
-
-animation:shine 6s infinite;
-
-}
 
 @keyframes shine{
 
@@ -692,4 +659,18 @@ left:-40%;
 left:150%;
 }
 
+}
+.end-images{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:20px;
+}
+
+.end-image{
+    width:420px;
+    max-width:90vw;
+    height:auto;
+    display:block;
+    border-radius:20px;
 }
