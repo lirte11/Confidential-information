@@ -54,12 +54,12 @@ ending.style.display = "flex";
 ending.style.visibility = "visible";
 ending.classList.add("show");
 const music = document.getElementById("music");
-music.load();
 
-music.addEventListener("canplay", function () {
-    music.currentTime = 169;
-    music.play();
-}, { once: true });
+music.currentTime = 169;
+
+music.play().catch(err => {
+    console.error(err);
+});
     startHearts();
 
 setTimeout(()=>{
