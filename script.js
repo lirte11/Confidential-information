@@ -48,12 +48,13 @@ document.getElementById("finish").onclick = function () {
 
     document.querySelector(".hero").style.display = "none";
     document.getElementById("letterPage").style.display = "none";
-   const ending = document.getElementById("ending");
-ending.style.display = "flex";
-ending.style.visibility = "visible";
+  const ending = document.getElementById("ending");
+
+ending.classList.add("show");
 
     startHearts();
     startFireworks();
+    startRoses();
 
 };
 
@@ -179,5 +180,27 @@ function showParagraphs(){
         },index*900);
 
     });
+
+}
+function startRoses(){
+
+    setInterval(()=>{
+
+        const rose=document.createElement("div");
+
+        rose.className="rose";
+
+        rose.innerHTML="🌹";
+
+        rose.style.left=Math.random()*100+"vw";
+        rose.style.animationDuration=(4+Math.random()*3)+"s";
+
+        document.body.appendChild(rose);
+
+        setTimeout(()=>{
+            rose.remove();
+        },7000);
+
+    },450);
 
 }
