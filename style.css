@@ -665,9 +665,9 @@ left:150%;
 }
 
 .end-image{
-   width: 150px;
-    max-width: 80vw;
-    height: auto;
-    border-radius: 20px;
-    display: block;
+    width:300px;
+    max-width:90vw;
+    height:auto;
+    border-radius:20px;
+    display:block;
 }
