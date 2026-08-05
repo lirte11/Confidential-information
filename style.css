@@ -645,12 +645,16 @@ translateY(0);
 }
 
 }
+.end-images{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
 .end-image{
-
-position:relative;
-
-overflow:hidden;
-
+    width:auto;
+    height:95vh;
+    object-fit:contain;
 }
 
 .end-image::after{
