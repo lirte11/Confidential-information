@@ -665,9 +665,8 @@ left:150%;
 }
 
 .end-image{
-    width:300px;
+    width:270px;
     max-width:90vw;
     height:auto;
     border-radius:20px;
-    display:block;
 }
