@@ -601,7 +601,7 @@ transform:scale(1);
 }
 
 #ending.show{
-    display:flex;
+    display:grid;
     visibility:visible;
 
     animation:
