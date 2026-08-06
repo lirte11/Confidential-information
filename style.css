@@ -348,23 +348,25 @@ height:auto;
     visibility:hidden;
 
     flex-direction:row-reverse;
-
-    justify-content:space-evenly;
-
+    justify-content:center;
     align-items:center;
+    gap:40px;
 
     overflow:hidden;
+    z-index:99999;
 }
 
 .end-left{
     width:260px;
-    flex-shrink:0;
 
     display:flex;
     flex-direction:column;
     justify-content:center;
     align-items:center;
     text-align:center;
+    color:#fff;
+
+    flex-shrink:0;
 }
 
 .end-left h1{
@@ -662,6 +664,7 @@ left:150%;
 .end-images{
     display:flex;
     flex-direction:column;
+    align-items:center;
     gap:15px;
     flex-shrink:0;
 }
