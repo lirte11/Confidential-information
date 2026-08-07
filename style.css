@@ -296,6 +296,7 @@ opacity:.3;
 }
 
 #paper{
+    border:10px solid red !important;
 width:70vw;
 max-width:600px;
 max-height:70vh;
