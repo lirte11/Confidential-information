@@ -209,8 +209,8 @@ opacity:.3;
 }
 #envelope{
     position:relative;
-    width:290px;
-    height:190px;
+    width:220px;
+height:145px;
     margin:60px auto;
     cursor:pointer;
 
@@ -260,7 +260,7 @@ opacity:.3;
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:70px;
+    font-size:50px;
     transition:1s;
     box-shadow:0 10px 30px rgba(0,0,0,.25);
 
@@ -296,7 +296,7 @@ opacity:.3;
 }
 
 #paper{
-    border:10px solid red !important;
+  
 width:70vw;
 max-width:600px;
 max-height:70vh;
@@ -668,10 +668,11 @@ left:150%;
 }
 
 .end-image{
-    width:180px;
+    width:145px;
     height:auto;
-    border-radius:18px;
+    border-radius:20px;
 }
+
 @media (max-width:768px){
 
     #ending{
