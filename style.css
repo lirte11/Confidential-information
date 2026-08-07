@@ -296,27 +296,26 @@ opacity:.3;
 }
 
 #paper{
-    width:min(95vw, 900px);
-    max-height:90vh;
-height:auto;
+    width:min(85vw, 720px);
+    max-height:82vh;
+    height:auto;
 
     background:#fff;
     color:#111;
 
     border-radius:22px;
 
-    padding:55px 45px;
+    padding:35px 30px;
 
     overflow-y:auto;
 
     transform:translateY(100%);
     transition:1s cubic-bezier(.2,.9,.2,1);
 
-    font-size:24px;
-    line-height:2.2;
+    font-size:20px;
+    line-height:1.8;
 
-    box-shadow:
-    0 20px 80px rgba(0,0,0,.45);
+    box-shadow:0 20px 80px rgba(0,0,0,.45);
 }
 #paper p{
 
