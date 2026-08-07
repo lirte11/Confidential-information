@@ -296,9 +296,9 @@ opacity:.3;
 }
 
 #paper{
-    width:min(85vw, 720px);
-    max-height:82vh;
-    height:auto;
+width:70vw;
+max-width:600px;
+max-height:70vh;
 
     background:#fff;
     color:#111;
