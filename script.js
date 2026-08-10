@@ -264,3 +264,57 @@ function startRoses(){
     },450);
 
 }
+let leftThePage = false;
+
+document.addEventListener("visibilitychange", function () {
+
+    if (document.hidden) {
+
+        // המשתמש יצא מהאתר
+        leftThePage = true;
+
+    } else if (leftThePage) {
+
+        // המשתמש חזר לאתר
+        leftThePage = false;
+
+        // מחזירים למסך הסיסמה
+        document.getElementById("password-screen").style.display = "flex";
+
+        // מסתירים את מסך הפתיחה
+        const hero = document.querySelector(".hero");
+        if (hero) {
+            hero.style.display = "none";
+        }
+
+        // מסתירים את המכתב
+        const letterPage = document.getElementById("letterPage");
+        if (letterPage) {
+            letterPage.style.display = "none";
+        }
+
+        // מסתירים את מסך הסיום
+        const ending = document.getElementById("ending");
+        if (ending) {
+            ending.classList.remove("show");
+            ending.style.display = "none";
+            ending.style.visibility = "hidden";
+        }
+
+        // מוחקים את הסיסמה שהוקלדה
+        const password = document.getElementById("password");
+        if (password) {
+            password.value = "";
+        }
+
+        // מוחקים הודעת שגיאה אם קיימת
+        const error = document.getElementById("error");
+        if (error) {
+            error.textContent = "";
+        }
+
+        // מחזירים את הדף להתחלה
+        window.scrollTo(0, 0);
+    }
+
+});
