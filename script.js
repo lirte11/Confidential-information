@@ -270,31 +270,54 @@ let pageWasHidden = false;
 
 function lockPageAgain() {
 
-    document.getElementById("password-screen").style.display = "flex";
+    // עצירת השיר
+    const music = document.getElementById("music");
 
+    if (music) {
+        music.pause();
+        music.currentTime = 0;
+    }
+
+    // מסך סיסמה
+    const passwordScreen = document.getElementById("password-screen");
+
+    if (passwordScreen) {
+        passwordScreen.style.display = "flex";
+    }
+
+    // מסך פתיחה
     const hero = document.querySelector(".hero");
+
     if (hero) {
         hero.style.display = "none";
     }
 
+    // המכתב
     const letterPage = document.getElementById("letterPage");
+
     if (letterPage) {
         letterPage.style.display = "none";
     }
 
+    // מסך הסיום
     const ending = document.getElementById("ending");
+
     if (ending) {
         ending.classList.remove("show");
         ending.style.display = "none";
         ending.style.visibility = "hidden";
     }
 
+    // ניקוי הסיסמה
     const password = document.getElementById("password");
+
     if (password) {
         password.value = "";
     }
 
+    // ניקוי הודעת שגיאה
     const error = document.getElementById("error");
+
     if (error) {
         error.textContent = "";
     }
@@ -331,13 +354,23 @@ document.addEventListener("visibilitychange", function () {
 });
 
 
-// טיפול ב-Safari כאשר הוא משחזר את הדף מהזיכרון
-window.addEventListener("pageshow", function(event) {
+// Safari - מעבר/חזרה מהדף
+window.addEventListener("pagehide", function () {
+
+    if (isUnlocked) {
+        pageWasHidden = true;
+    }
+
+});
+
+
+// Safari כאשר הדף משוחזר מהזיכרון
+window.addEventListener("pageshow", function (event) {
 
     if (event.persisted && isUnlocked) {
 
-        isUnlocked = false;
         pageWasHidden = false;
+        isUnlocked = false;
 
         lockPageAgain();
     }
