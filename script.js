@@ -318,33 +318,78 @@ document.addEventListener("visibilitychange", function () {
     }
 
 });
+let isUnlocked = false;
 let pageWasHidden = false;
 
+
+// כשנכנסים עם סיסמה נכונה
+const originalOpenGift = document.getElementById("openGift");
+
+originalOpenGift.addEventListener("click", function () {
+
+    const password = document.getElementById("password").value;
+
+    if (password === PASSWORD) {
+        isUnlocked = true;
+    }
+
+});
+
+
+// כשעוזבים את האתר
+document.addEventListener("visibilitychange", function () {
+
+    if (document.visibilityState === "hidden") {
+
+        if (isUnlocked) {
+            pageWasHidden = true;
+        }
+
+        return;
+    }
+
+    // חזרנו לאתר
+    if (
+        document.visibilityState === "visible" &&
+        pageWasHidden &&
+        isUnlocked
+    ) {
+
+        pageWasHidden = false;
+        isUnlocked = false;
+
+        lockPageAgain();
+    }
+
+});
+
+
+// נעילת האתר מחדש
 function lockPageAgain() {
 
-    // מסך הסיסמה
-    const passwordScreen = document.getElementById("password-screen");
+    const passwordScreen =
+        document.getElementById("password-screen");
 
     if (passwordScreen) {
         passwordScreen.style.display = "flex";
     }
 
-    // מסך הפתיחה
-    const hero = document.querySelector(".hero");
+    const hero =
+        document.querySelector(".hero");
 
     if (hero) {
         hero.style.display = "none";
     }
 
-    // המכתב
-    const letterPage = document.getElementById("letterPage");
+    const letterPage =
+        document.getElementById("letterPage");
 
     if (letterPage) {
         letterPage.style.display = "none";
     }
 
-    // מסך הסיום
-    const ending = document.getElementById("ending");
+    const ending =
+        document.getElementById("ending");
 
     if (ending) {
         ending.classList.remove("show");
@@ -352,15 +397,15 @@ function lockPageAgain() {
         ending.style.visibility = "hidden";
     }
 
-    // ניקוי הסיסמה
-    const password = document.getElementById("password");
+    const password =
+        document.getElementById("password");
 
     if (password) {
         password.value = "";
     }
 
-    // ניקוי הודעת שגיאה
-    const error = document.getElementById("error");
+    const error =
+        document.getElementById("error");
 
     if (error) {
         error.textContent = "";
@@ -368,37 +413,3 @@ function lockPageAgain() {
 
     window.scrollTo(0, 0);
 }
-
-
-// יציאה מהאתר / מעבר לאפליקציה אחרת
-document.addEventListener("visibilitychange", function () {
-
-    if (document.visibilityState === "hidden") {
-        pageWasHidden = true;
-    }
-
-    if (
-        document.visibilityState === "visible" &&
-        pageWasHidden
-    ) {
-        pageWasHidden = false;
-        lockPageAgain();
-    }
-
-});
-
-
-// Safari / iPhone - חזרה מדף שנשמר ב-cache
-window.addEventListener("pageshow", function (event) {
-
-    if (event.persisted) {
-        lockPageAgain();
-    }
-
-});
-
-
-// גם כשעוזבים את הדף
-window.addEventListener("pagehide", function () {
-    pageWasHidden = true;
-});
