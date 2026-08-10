@@ -169,19 +169,49 @@
 </div>
 <div id="ending">
 
-    <div class="end-left">
-        <h1 class="endFade">❤️ אוהב אותך המון ❤️</h1>
-        <h2 class="endFade">❤️ אוהב אותך כל חיי ❤️</h2>
-        <h3 class="endFade">❤️ אהבת חיי ❤️</h3>
-        <h4 class="endFade">א.א.א</h4>
-    </div>
+    <div class="ending-content">
 
-    <div class="end-images">
-        <img src="photo2.jpg" class="end-image">
-        <img src="end.jpg" class="end-image">
+        <div class="end-left">
+            <h1 class="endFade">❤️ אוהב אותך המון ❤️</h1>
+            <h2 class="endFade">❤️ אוהב אותך כל חיי ❤️</h2>
+            <h3 class="endFade">❤️ אהבת חיי ❤️</h3>
+            <h4 class="endFade">א.א.א</h4>
+        </div>
+
+        <div class="end-images">
+
+            <img src="photo1.jpg" class="end-image">
+            <img src="photo2.jpg" class="end-image">
+            <img src="photo3.jpg" class="end-image">
+            <img src="photo4.jpg" class="end-image">
+
+        </div>
+
+        <button id="continueBtn" onclick="showFinalPhoto()">
+            המשך ❤️
+        </button>
+
     </div>
 
 </div>
+
+<div id="final-photo">
+
+    <img src="photo5.jpg" class="final-image">
+
+    <h2>❤️ כל החיים תשארי בלב שלי❤️</h2>
+
+</div>
+<script>
+function showFinalPhoto(){
+
+    document.getElementById("ending").style.display = "none";
+    document.getElementById("ending").style.visibility = "hidden";
+
+    document.getElementById("final-photo").classList.add("show");
+
+}
+</script>
 <script src="script.js"></script>
 
 </body>
