@@ -318,3 +318,58 @@ document.addEventListener("visibilitychange", function () {
     }
 
 });
+let leftThePage = false;
+
+document.addEventListener("visibilitychange", function () {
+
+    if (document.visibilityState === "hidden") {
+        leftThePage = true;
+        return;
+    }
+
+    if (document.visibilityState === "visible" && leftThePage) {
+
+        leftThePage = false;
+
+        // מסך הסיסמה
+        const passwordScreen = document.getElementById("password-screen");
+        if (passwordScreen) {
+            passwordScreen.style.display = "flex";
+        }
+
+        // מסך הפתיחה
+        const hero = document.querySelector(".hero");
+        if (hero) {
+            hero.style.display = "none";
+        }
+
+        // המכתב
+        const letterPage = document.getElementById("letterPage");
+        if (letterPage) {
+            letterPage.style.display = "none";
+        }
+
+        // מסך הסיום
+        const ending = document.getElementById("ending");
+        if (ending) {
+            ending.classList.remove("show");
+            ending.style.display = "none";
+            ending.style.visibility = "hidden";
+        }
+
+        // מנקה את הסיסמה
+        const password = document.getElementById("password");
+        if (password) {
+            password.value = "";
+        }
+
+        // מנקה הודעת שגיאה
+        const error = document.getElementById("error");
+        if (error) {
+            error.textContent = "";
+        }
+
+        // מחזיר לראש העמוד
+        window.scrollTo(0, 0);
+    }
+});
