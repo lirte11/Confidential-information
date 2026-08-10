@@ -329,14 +329,20 @@ function lockPageAgain() {
 // יציאה מהאתר / מעבר לאפליקציה אחרת
 document.addEventListener("visibilitychange", function () {
 
-    if (document.visibilityState === "hidden") {
+   if (document.visibilityState === "hidden") {
 
-        if (isUnlocked) {
-            pageWasHidden = true;
-        }
-
-        return;
+    if (isUnlocked) {
+        pageWasHidden = true;
     }
+
+    const music = document.getElementById("music");
+
+    if (music) {
+        music.pause();
+    }
+
+    return;
+}
 
     // חזרה לאתר
     if (
