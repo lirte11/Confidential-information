@@ -5,6 +5,7 @@ document.getElementById("openGift").onclick = () => {
     const value = document.getElementById("password").value;
 
     if (value === PASSWORD) {
+        isUnlocked = true;
 
         document.getElementById("password-screen").style.display = "none";
         document.getElementById("loading-screen").style.display = "flex";
@@ -264,79 +265,45 @@ function startRoses(){
     },450);
 
 }
-let leftThePage = false;
-
-document.addEventListener("visibilitychange", function () {
-
-    if (document.hidden) {
-
-        // המשתמש יצא מהאתר
-        leftThePage = true;
-
-    } else if (leftThePage) {
-
-        // המשתמש חזר לאתר
-        leftThePage = false;
-
-        // מחזירים למסך הסיסמה
-        document.getElementById("password-screen").style.display = "flex";
-
-        // מסתירים את מסך הפתיחה
-        const hero = document.querySelector(".hero");
-        if (hero) {
-            hero.style.display = "none";
-        }
-
-        // מסתירים את המכתב
-        const letterPage = document.getElementById("letterPage");
-        if (letterPage) {
-            letterPage.style.display = "none";
-        }
-
-        // מסתירים את מסך הסיום
-        const ending = document.getElementById("ending");
-        if (ending) {
-            ending.classList.remove("show");
-            ending.style.display = "none";
-            ending.style.visibility = "hidden";
-        }
-
-        // מוחקים את הסיסמה שהוקלדה
-        const password = document.getElementById("password");
-        if (password) {
-            password.value = "";
-        }
-
-        // מוחקים הודעת שגיאה אם קיימת
-        const error = document.getElementById("error");
-        if (error) {
-            error.textContent = "";
-        }
-
-        // מחזירים את הדף להתחלה
-        window.scrollTo(0, 0);
-    }
-
-});
 let isUnlocked = false;
 let pageWasHidden = false;
 
+function lockPageAgain() {
 
-// כשנכנסים עם סיסמה נכונה
-const originalOpenGift = document.getElementById("openGift");
+    document.getElementById("password-screen").style.display = "flex";
 
-originalOpenGift.addEventListener("click", function () {
-
-    const password = document.getElementById("password").value;
-
-    if (password === PASSWORD) {
-        isUnlocked = true;
+    const hero = document.querySelector(".hero");
+    if (hero) {
+        hero.style.display = "none";
     }
 
-});
+    const letterPage = document.getElementById("letterPage");
+    if (letterPage) {
+        letterPage.style.display = "none";
+    }
+
+    const ending = document.getElementById("ending");
+    if (ending) {
+        ending.classList.remove("show");
+        ending.style.display = "none";
+        ending.style.visibility = "hidden";
+    }
+
+    const password = document.getElementById("password");
+    if (password) {
+        password.value = "";
+    }
+
+    const error = document.getElementById("error");
+    if (error) {
+        error.textContent = "";
+    }
+
+    window.scrollTo(0, 0);
+}
 
 
-// כשעוזבים את האתר
+// יציאה מהאתר / מעבר לאפליקציה אחרת
 document.addEventListener("visibilitychange", function () {
 
     if (document.visibilityState === "hidden") {
@@ -348,7 +315,7 @@ document.addEventListener("visibilitychange", function () {
         return;
     }
 
-    // חזרנו לאתר
+    // חזרה לאתר
     if (
         document.visibilityState === "visible" &&
         pageWasHidden &&
@@ -364,52 +331,15 @@ document.addEventListener("visibilitychange", function () {
 });
 
 
-// נעילת האתר מחדש
-function lockPageAgain() {
+// טיפול ב-Safari כאשר הוא משחזר את הדף מהזיכרון
+window.addEventListener("pageshow", function(event) {
 
-    const passwordScreen =
-        document.getElementById("password-screen");
+    if (event.persisted && isUnlocked) {
 
-    if (passwordScreen) {
-        passwordScreen.style.display = "flex";
+        isUnlocked = false;
+        pageWasHidden = false;
+
+        lockPageAgain();
     }
 
-    const hero =
-        document.querySelector(".hero");
-
-    if (hero) {
-        hero.style.display = "none";
-    }
-
-    const letterPage =
-        document.getElementById("letterPage");
-
-    if (letterPage) {
-        letterPage.style.display = "none";
-    }
-
-    const ending =
-        document.getElementById("ending");
-
-    if (ending) {
-        ending.classList.remove("show");
-        ending.style.display = "none";
-        ending.style.visibility = "hidden";
-    }
-
-    const password =
-        document.getElementById("password");
-
-    if (password) {
-        password.value = "";
-    }
-
-    const error =
-        document.getElementById("error");
-
-    if (error) {
-        error.textContent = "";
-    }
-
-    window.scrollTo(0, 0);
-}
+});
