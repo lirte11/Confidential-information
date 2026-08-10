@@ -318,58 +318,87 @@ document.addEventListener("visibilitychange", function () {
     }
 
 });
-let leftThePage = false;
+let pageWasHidden = false;
 
+function lockPageAgain() {
+
+    // מסך הסיסמה
+    const passwordScreen = document.getElementById("password-screen");
+
+    if (passwordScreen) {
+        passwordScreen.style.display = "flex";
+    }
+
+    // מסך הפתיחה
+    const hero = document.querySelector(".hero");
+
+    if (hero) {
+        hero.style.display = "none";
+    }
+
+    // המכתב
+    const letterPage = document.getElementById("letterPage");
+
+    if (letterPage) {
+        letterPage.style.display = "none";
+    }
+
+    // מסך הסיום
+    const ending = document.getElementById("ending");
+
+    if (ending) {
+        ending.classList.remove("show");
+        ending.style.display = "none";
+        ending.style.visibility = "hidden";
+    }
+
+    // ניקוי הסיסמה
+    const password = document.getElementById("password");
+
+    if (password) {
+        password.value = "";
+    }
+
+    // ניקוי הודעת שגיאה
+    const error = document.getElementById("error");
+
+    if (error) {
+        error.textContent = "";
+    }
+
+    window.scrollTo(0, 0);
+}
+
+
+// יציאה מהאתר / מעבר לאפליקציה אחרת
 document.addEventListener("visibilitychange", function () {
 
     if (document.visibilityState === "hidden") {
-        leftThePage = true;
-        return;
+        pageWasHidden = true;
     }
 
-    if (document.visibilityState === "visible" && leftThePage) {
-
-        leftThePage = false;
-
-        // מסך הסיסמה
-        const passwordScreen = document.getElementById("password-screen");
-        if (passwordScreen) {
-            passwordScreen.style.display = "flex";
-        }
-
-        // מסך הפתיחה
-        const hero = document.querySelector(".hero");
-        if (hero) {
-            hero.style.display = "none";
-        }
-
-        // המכתב
-        const letterPage = document.getElementById("letterPage");
-        if (letterPage) {
-            letterPage.style.display = "none";
-        }
-
-        // מסך הסיום
-        const ending = document.getElementById("ending");
-        if (ending) {
-            ending.classList.remove("show");
-            ending.style.display = "none";
-            ending.style.visibility = "hidden";
-        }
-
-        // מנקה את הסיסמה
-        const password = document.getElementById("password");
-        if (password) {
-            password.value = "";
-        }
-
-        // מנקה הודעת שגיאה
-        const error = document.getElementById("error");
-        if (error) {
-            error.textContent = "";
-        }
-
-        // מחזיר לראש העמוד
-        window.scrollTo(0, 0);
+    if (
+        document.visibilityState === "visible" &&
+        pageWasHidden
+    ) {
+        pageWasHidden = false;
+        lockPageAgain();
     }
+
+});
+
+
+// Safari / iPhone - חזרה מדף שנשמר ב-cache
+window.addEventListener("pageshow", function (event) {
+
+    if (event.persisted) {
+        lockPageAgain();
+    }
+
+});
+
+
+// גם כשעוזבים את הדף
+window.addEventListener("pagehide", function () {
+    pageWasHidden = true;
 });
