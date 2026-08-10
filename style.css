@@ -693,3 +693,207 @@ left:150%;
     }
 
 }
+/* =========================
+   מסך סיום חדש
+========================= */
+
+#ending{
+    position:fixed;
+    inset:0;
+    background:#000;
+
+    display:none;
+    visibility:hidden;
+
+    z-index:99999;
+
+    overflow-y:auto;
+    overflow-x:hidden;
+
+    padding:30px 15px;
+}
+
+#ending.show{
+    display:flex;
+    visibility:visible;
+
+    animation:endingEnter 1s ease;
+}
+
+.ending-content{
+    width:100%;
+    max-width:700px;
+
+    margin:auto;
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+
+    text-align:center;
+}
+
+/* הכיתוב */
+
+.end-left{
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    color:white;
+
+    margin-bottom:20px;
+}
+
+.end-left h1{
+    font-size:38px;
+    margin-bottom:12px;
+}
+
+.end-left h2{
+    font-size:30px;
+    margin-bottom:12px;
+}
+
+.end-left h3{
+    font-size:27px;
+    color:#ff5f9d;
+    margin-bottom:15px;
+}
+
+.end-left h4{
+    font-size:28px;
+}
+
+/* 4 התמונות */
+
+.end-images{
+    width:100%;
+
+    display:grid;
+    grid-template-columns:1fr 1fr;
+
+    gap:12px;
+
+    justify-items:center;
+}
+
+.end-image{
+    width:100%;
+    max-width:180px;
+
+    aspect-ratio:1 / 1;
+
+    object-fit:cover;
+
+    border-radius:18px;
+
+    display:block;
+}
+
+/* כפתור המשך */
+
+#continueBtn{
+    margin-top:25px;
+
+    width:180px;
+
+    padding:14px 20px;
+
+    border:none;
+    border-radius:30px;
+
+    background:#ff5f9d;
+    color:white;
+
+    font-size:21px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+/* המסך של התמונה החמישית */
+
+#final-photo{
+    position:fixed;
+    inset:0;
+
+    background:#000;
+
+    display:none;
+    visibility:hidden;
+
+    z-index:100000;
+
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:20px;
+}
+
+#final-photo.show{
+    display:flex;
+    visibility:visible;
+
+    animation:endingEnter 1s ease;
+}
+
+.final-image{
+    width:90vw;
+    max-width:500px;
+
+    max-height:75vh;
+
+    object-fit:contain;
+
+    border-radius:22px;
+
+    box-shadow:0 0 40px rgba(255,255,255,.15);
+}
+
+#final-photo h2{
+    color:#ff5f9d;
+
+    font-size:28px;
+
+    margin-top:25px;
+
+    text-align:center;
+}
+
+/* התאמה לאייפון */
+
+@media(max-width:600px){
+
+    #ending{
+        padding:20px 12px;
+    }
+
+    .end-left h1{
+        font-size:30px;
+    }
+
+    .end-left h2{
+        font-size:24px;
+    }
+
+    .end-left h3{
+        font-size:22px;
+    }
+
+    .end-left h4{
+        font-size:24px;
+    }
+
+    .end-images{
+        gap:10px;
+    }
+
+    .end-image{
+        max-width:155px;
+    }
+
+}
